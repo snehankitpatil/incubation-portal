@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Hall Utilization Summary</h1>
+
+<p style="margin-bottom:24px;color:#555;">
+This report provides a read-only summary of seat usage across all incubation halls.
+</p>
+   
+<table>
+    <tr>
+        <th>Hall</th>
+        <th>Total Seats</th>
+        <th>Occupied</th>
+        <th>Available</th>
+        <th>Utilization %</th>
+    </tr>
+
+{% for item in data %}
+<tr>
+    <td>{{ item.hall.name }}</td>
+    <td>{{ item.hall.total_seats }}</td>
+    <td>{{ item.occupied }}</td>
+    <td>{{ item.available }}</td>
+    <td>{{ item.utilization }}%</td>
+</tr>
+{% endfor %}
+</table>
+
+    <div style="margin-bottom:24px;">
+        <a href="/reports/utilization.csv" class="btn">
+            Download CSV
+        </a>
+    </div>
+{% endblock %}

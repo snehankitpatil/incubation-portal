@@ -1,0 +1,233 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BASE */
+body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    background: #fafafa;
+    color: #111;
+}
+
+/* LAYOUT */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+/* TOPBAR */
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.topbar-inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #555;
+}
+
+.nav a:hover {
+    color: #000;
+}
+
+/* PAGE */
+.page {
+    padding: 48px 0;
+}
+
+/* TITLES */
+.page-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+/* DASHBOARD GRID */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* CARD */
+.card {
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    padding: 24px;
+    transition: border 0.2s;
+}
+
+.card:hover {
+    border-color: #000;
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.card-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+    padding-bottom: 12px;
+}
+
+td {
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* STATUS */
+.badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #eee;
+}
+
+.badge.active {
+    background: #111;
+    color: #fff;
+}
+
+.badge.approved {
+    background: #ccc;
+}
+
+.badge.exited {
+    background: #f0f0f0;
+    color: #888;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 13px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+}
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+/* FULL CENTER LAYOUT */
+.center-wrapper {
+    min-height: calc(100vh - 64px); /* minus header height */
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;      /* vertical center */
+}
+
+/* CONTENT BOX */
+.center-content {
+    width: 700px;              /* 👈 THIS is the key */
+    padding: 40px;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+}
+
+
+.card-grid {
+    justify-content: center;
+}
+.card-meta {
+    line-height: 1.6;
+}
+/* ACTION ROW */
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* SEAT CHANGE FORM */
+.seat-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.seat-input {
+    width: 70px;
+    padding: 6px 8px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+}
+
+.seat-note-input {
+    width: 200px;
+    padding: 6px 8px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON VARIANTS */
+.btn-secondary {
+    border: 1px solid #555;
+    background: #fff;
+    color: #111;
+}
+
+.btn-secondary:hover {
+    background: #111;
+    color: #fff;
+}
+
+.btn-danger {
+    border: 1px solid #aaa;
+    background: #fff;
+    color: #888;
+}
+
+.btn-danger:hover {
+    background: #111;
+    color: #fff;
+}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Register Startup</h1>
+
+{% if error %}
+<p style="color:#555;margin-bottom:16px;">{{ error }}</p>
+{% endif %}
+
+<form method="post" style="max-width:420px;">
+
+    <input name="name" placeholder="Startup name" required class="input">
+    <input name="founder" placeholder="Founder name" class="input">
+    <input name="email" placeholder="Email" class="input">
+    <input name="phone" placeholder="Phone" class="input">
+
+    <select name="hall_id" required class="input">
+        <option value="">Select hall</option>
+        {% for hall in halls %}
+            <option value="{{ hall.id }}">{{ hall.name }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="number" name="seats" placeholder="Seats required" required class="input">
+
+    <button class="btn" type="submit">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">{{ hall.name }}</h2>
+
+<p><strong>Total seats:</strong> {{ hall.total_seats }}</p>
+
+<hr style="margin:24px 0;">
+
+<h3>Active Startups</h3>
+
+{% if startups %}
+    <table style="width:100%;border-collapse:collapse;">
+        <tr>
+            <th>Name</th>
+            <th>Founder</th>
+            <th>Seats</th>
+        </tr>
+
+        {% for s in startups %}
+        <tr style="border-bottom:1px solid #eee;">
+            <td>{{ s.name }}</td>
+            <td>{{ s.founder }}</td>
+            <td>{{ s.seats_allocated }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p style="color:#666;">No active startups in this hall.</p>
+{% endif %}
+
+<a href="/" style="display:inline-block;margin-top:24px;color:#555;">
+    ← Back to Dashboard
+</a>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Allocation History</h1>
+
+<table>
+    <tr>
+        <th>Startup</th>
+        <th>Hall</th>
+        <th>Seats</th>
+        <th>Allocated At</th>
+        <th>Released At</th>
+        <th>Status</th>
+    </tr>
+
+{% for record, startup_name, hall_name in records %}
+<tr>
+    <td>{{ startup_name }}</td>
+    <td>{{ hall_name }}</td>
+    <td>{{ record.seats }}</td>
+    <td>{{ record.allocated_at.strftime("%Y-%m-%d %H:%M") }}</td>
+
+    <td>
+        {% if record.released_at %}
+            {{ record.released_at.strftime("%Y-%m-%d %H:%M") }}
+        {% else %}
+            —
+        {% endif %}
+    </td>
+
+    <td>
+        {% if record.released_at %}
+            Exited
+        {% else %}
+            Active
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% if not records %}
+<p style="color:#666;">No allocation history yet.</p>
+{% endif %}
+
+{% endblock %}

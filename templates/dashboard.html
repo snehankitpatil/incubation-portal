@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Dashboard</h1>
+
+{% if alerts %}
+<section style="margin-bottom:40px;">
+    <h2 class="page-title" style="font-size:20px;">System Alerts</h2>
+
+    <ul style="padding-left:20px;color:#444;">
+        {% for alert in alerts %}
+            <li style="margin-bottom:8px;">⚠ {{ alert }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<div class="card-grid">
+{% for item in data %}
+    <div class="card"
+         onclick="location.href='/hall/{{ item.hall.id }}'">
+
+        <div class="card-title">{{ item.hall.name }}</div>
+
+        <div class="card-meta">
+            Seats: {{ item.hall.total_seats }} total
+        </div>
+
+        <div class="card-meta">
+            Occupied: {{ item.occupied }}
+        </div>
+
+        <div class="card-meta">
+            Available: {{ item.available }}
+        </div>
+
+        <div class="card-meta">
+            Utilization: {{ item.utilization }}%
+        </div>
+
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

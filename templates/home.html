@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Incubation Dashboard</h1>
+
+<div class="card-container">
+    <div class="card">
+        <h3>Total Spaces</h3>
+        <p>{{ total_spaces }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Available Spaces</h3>
+        <p>{{ available_spaces }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Occupied Spaces</h3>
+        <p>{{ occupied_spaces }}</p>
+    </div>
+</div>
+
+{% endblock %}

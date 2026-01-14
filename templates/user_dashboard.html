@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">My Dashboard</h1>
+
+<div class="card">
+    <div class="card-title">{{ startup.name }}</div>
+
+    <div class="card-meta">
+        Status: <strong>{{ startup.status }}</strong>
+    </div>
+
+    <div class="card-meta">
+        Seats Allocated: {{ startup.seats_allocated or 0 }}
+    </div>
+
+    <div class="card-meta">
+        Hall ID: {{ startup.hall_id or "-" }}
+    </div>
+</div>
+
+<h2 style="margin-top:40px;">Seat Change Requests</h2>
+
+{% if requests %}
+<table>
+    <tr>
+        <th>Current</th>
+        <th>Requested</th>
+        <th>Status</th>
+        <th>Note</th>
+    </tr>
+
+    {% for r in requests %}
+    <tr>
+        <td>{{ r.current_seats }}</td>
+        <td>
+            {% if r.requested_seats > 0 %}+{% endif %}
+            {{ r.requested_seats }}
+        </td>
+        <td>{{ r.status }}</td>
+        <td>{{ r.user_note }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p style="color:#666;">No seat requests yet.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<h1>Admin Dashboard</h1>
+
+{% for startup in startups %}
+  <p>{{ startup.startup_name }} - {{ startup.status }}</p>
+
+  {% if startup.status == 'PENDING' %}
+    <form method="POST">
+      <input type="hidden" name="startup_id" value="{{ startup.id }}">
+      <select name="space_id">
+        {% for space in spaces %}
+          <option value="{{ space.id }}">{{ space.name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Approve</button>
+    </form>
+  {% endif %}
+{% endfor %}

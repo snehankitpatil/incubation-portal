@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Startup Report</h1>
+
+<p style="margin-bottom:24px;color:#555;">
+This report shows the <strong>current state</strong> of all startups.
+</p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Hall</th>
+        <th>Seats</th>
+        <th>Status</th>
+    </tr>
+
+{% for startup, hall_name in startups %}
+<tr>
+    <td>{{ startup.name }}</td>
+    <td>{{ hall_name or "-" }}</td>
+    <td>{{ startup.seats_allocated or "-" }}</td>
+    <td>{{ startup.status }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% if not startups %}
+<p style="color:#666;">No startups found.</p>
+{% endif %}
+
+<div style="margin-top:32px;">
+    <a class="btn" href="/export/startups.csv">
+        Download Startups CSV
+    </a>
+</div>
+
+{% endblock %}

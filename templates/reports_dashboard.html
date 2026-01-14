@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Reports</h1>
+
+<p style="margin-bottom:32px;color:#555;">
+Access system data, audit history, and operational summaries.
+</p>
+
+<div class="card-grid">
+
+    <!-- Startup Report -->
+    <div class="card" onclick="location.href='/reports/startups'">
+        <div class="card-title">Startup Report</div>
+        <div class="card-meta">
+            Current state of all startups, including hall, seats, and status.
+        </div>
+        <div class="card-meta">
+            Data type: Live snapshot
+        </div>
+        <div class="card-meta">
+            Output: Table preview, CSV export
+        </div>
+    </div>
+
+    <!-- Allocation History -->
+    <div class="card" onclick="location.href='/reports/allocations'">
+        <div class="card-title">Allocation History</div>
+        <div class="card-meta">
+            Complete audit trail of seat allocations and changes.
+        </div>
+        <div class="card-meta">
+            Data type: Historical log
+        </div>
+        <div class="card-meta">
+            Output: Table preview, CSV export
+        </div>
+    </div>
+
+    <!-- Hall Utilization -->
+    <div class="card" onclick="location.href='/reports/utilization'">
+        <div class="card-title">Hall Utilization Summary</div>
+        <div class="card-meta">
+            Seat usage and availability per incubation hall.
+        </div>
+        <div class="card-meta">
+            Data type: Calculated metrics
+        </div>
+        <div class="card-meta">
+            Source: Dashboard data
+        </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="card" onclick="location.href='/reports/alerts'">
+        <div class="card-title">System Alerts</div>
+        <div class="card-meta">
+            Operational warnings based on seat usage and capacity.
+        </div>
+        <div class="card-meta">
+            Data type: Rule-based
+        </div>
+        <div class="card-meta">
+            Source: Live system state
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
