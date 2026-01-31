@@ -3,23 +3,23 @@
 
 <h1 class="page-title">Seat Change Requests</h1>
 
-<table>
+<table class="pill-table">
 <tr>
-    <th>Startup</th>
-    <th>Current</th>
-    <th>Requested</th>
-    <th>User Note</th>
-    <th>Status</th>
-    <th>Action</th>
+    <th class="pill-th">Startup</th>
+    <th class="pill-th">Current</th>
+    <th class="pill-th">Requested</th>
+    <th class="pill-th">User Note</th>
+    <th class="pill-th">Status</th>
+    <th class="pill-th">Action</th>
 </tr>
 
 {% for req, startup_name in requests %}
-<tr>
-    <td>{{ startup_name }}</td>
+<tr class="pill-row">
+    <td class="pill-td">{{ startup_name }}</td>
 
-    <td>{{ req.current_seats }}</td>
+    <td class="pill-td">{{ req.current_seats }}</td>
 
-    <td>
+    <td class="pill-td">
         {% if req.requested_seats > 0 %}
             +{{ req.requested_seats }}
         {% else %}
@@ -27,11 +27,11 @@
         {% endif %}
     </td>
 
-    <td style="max-width:300px;color:#555;">
+    <td class="pill-td" style="max-width:300px;color:#555;">
         {{ req.user_note }}
     </td>
 
-    <td>
+    <td class="pill-td">
         <span class="badge {{ req.status }}">
             {{ req.status }}
         </span>
@@ -43,7 +43,7 @@
         {% endif %}
     </td>
 
-    <td>
+    <td class="pill-td">
         {% if req.status == "pending" %}
             <a class="btn btn-secondary"
                href="/seat-requests/{{ req.id }}/approve">

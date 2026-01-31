@@ -1,29 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="page-title">Register Startup</h1>
+<style>
+.register-content {
+   
+    display: flex;              
+    flex-direction: column;     
+    align-items: center;
+}
 
-{% if error %}
-<p style="color:#555;margin-bottom:16px;">{{ error }}</p>
-{% endif %}
+.register-content form {
+    width: 100%;
+    max-width: 420px;
+}
 
-<form method="post" style="max-width:420px;">
+.register-content .btn {
+    margin-top: 12px;
+}
+</style>
 
-    <input name="name" placeholder="Startup name" required class="input">
-    <input name="founder" placeholder="Founder name" class="input">
-    <input name="email" placeholder="Email" class="input">
-    <input name="phone" placeholder="Phone" class="input">
+<div class="register-wrapper">
+  <div class="register-content">
 
-    <select name="hall_id" required class="input">
-        <option value="">Select hall</option>
-        {% for hall in halls %}
-            <option value="{{ hall.id }}">{{ hall.name }}</option>
-        {% endfor %}
-    </select>
+    <h1 class="page-title">Register Startup</h1>
 
-    <input type="number" name="seats" placeholder="Seats required" required class="input">
+    {% if error %}
+    <p style="color:#555;margin-bottom:16px;">{{ error }}</p>
+    {% endif %}
 
-    <button class="btn" type="submit">Submit</button>
-</form>
+    <form method="post">
+
+        <input name="name" placeholder="Startup name" required class="input">
+        <input name="founder" placeholder="Founder name" class="input">
+        <input name="email" placeholder="Email" class="input">
+        <input name="phone" placeholder="Phone" class="input">
+
+        <select name="hall_id" required class="input">
+            <option value="">Select hall</option>
+            {% for hall in halls %}
+                <option value="{{ hall.id }}">{{ hall.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="number" name="seats" placeholder="Seats required" required class="input">
+
+        <button class="btn" type="submit">Submit</button>
+    </form>
+
+  </div>
+</div>
 
 {% endblock %}

@@ -9,7 +9,11 @@
 body {
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
                  Roboto, Helvetica, Arial, sans-serif;
-    background: #fafafa;
+    background: #f7f7f8;
+    background-image: url("sppu.png");  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #111;
 }
 
@@ -22,9 +26,12 @@ body {
 
 /* TOPBAR */
 .topbar {
-    background: #fff;
-    border-bottom: 1px solid #e6e6e6;
+    background: rgba(255, 255, 255, 0.15);   /* 👈 transparent */
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);              /* 👈 optional glass */
+    -webkit-backdrop-filter: blur(8px);
 }
+
 
 .topbar-inner {
     height: 64px;
@@ -43,11 +50,13 @@ body {
     text-decoration: none;
     font-size: 14px;
     color: #555;
+    transition: color 0.2s ease, transform 0.15s ease;
 }
 
-.nav a:hover {
-    color: #000;
-}
+.nav a:hover { color: #000; text-decoration: underline; text-underline-offset: 4px; }
+
+
+
 
 /* PAGE */
 .page {
@@ -60,6 +69,8 @@ body {
     font-weight: 600;
     margin-bottom: 32px;
     text-align: center;
+    letter-spacing: -0.3px;
+
 }
 
 /* DASHBOARD GRID */
@@ -67,18 +78,25 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 24px;
+    justify-content: center;
 }
 
 /* CARD */
 .card {
-    background: #fff;
-    border: 1px solid #e3e3e3;
+    background: rgba(240, 240, 255, 0.55);   /* 👈 soft bluish tint */
+    border: 1px solid rgba(255,255,255,0.35);
     padding: 24px;
-    transition: border 0.2s;
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
 }
+
 
 .card:hover {
     border-color: #000;
+    transform: translateY(-3px);        /* 👈 premium lift */
+    box-shadow: 0 10px 24px rgba(0,0,0,0.10);
     cursor: pointer;
 }
 
@@ -92,6 +110,7 @@ body {
     font-size: 14px;
     color: #666;
     margin-bottom: 6px;
+    line-height: 1.6;
 }
 
 /* TABLE */
@@ -114,73 +133,88 @@ td {
     font-size: 14px;
 }
 
+tr:hover td {
+    background: rgba(0,0,0,0.02);       /* 👈 soft hover */
+}
+
 /* STATUS */
 .badge {
     font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;               /* 👈 pill style */
     background: #eee;
-}
-
-.badge.active {
-    background: #111;
-    color: #fff;
-}
-
-.badge.approved {
-    background: #ccc;
-}
-
-.badge.exited {
-    background: #f0f0f0;
-    color: #888;
 }
 
 /* BUTTON */
 .btn {
     display: inline-block;
-    padding: 8px 14px;
+    padding: 9px 16px;
     font-size: 13px;
     border: 1px solid #000;
     background: #fff;
     color: #000;
     text-decoration: none;
+    border-radius: 8px;                 /* 👈 curvy */
+    transition: all 0.2s ease;
 }
 
 .btn:hover {
     background: #000;
     color: #fff;
+    transform: translateY(-2px);        /* 👈 lift */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 }
+
+/* INPUT */
 .input {
     width: 100%;
     padding: 10px;
     margin-bottom: 14px;
     border: 1px solid #ddd;
     font-size: 14px;
+    border-radius: 8px;                 /* 👈 curvy */
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
+
+.input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
 /* FULL CENTER LAYOUT */
-.center-wrapper {
-    min-height: calc(100vh - 64px); /* minus header height */
+/* EDIT STARTUP PAGE ONLY */
+.edit-startup-wrapper {
+
+     min-height: calc(100vh - 64px);
     display: flex;
-    justify-content: center;  /* horizontal center */
-    align-items: center;      /* vertical center */
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.center-wrapper {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* CONTENT BOX */
 .center-content {
-    width: 700px;              /* 👈 THIS is the key */
+    width: 800px;
     padding: 40px;
-    background: #fff;
-    border: 1px solid #e3e3e3;
+    background: rgba(255, 255, 255, 0.0);   /* 👈 semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    backdrop-filter: blur(3px);            /* 👈 glass blur */
+    -webkit-backdrop-filter: blur(12px);    /* Safari support */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+    
 }
 
 
-.card-grid {
-    justify-content: center;
-}
-.card-meta {
-    line-height: 1.6;
-}
 /* ACTION ROW */
 .action-row {
     display: flex;
@@ -188,46 +222,59 @@ td {
     gap: 12px;
 }
 
-/* SEAT CHANGE FORM */
+/* SEAT FORM */
 .seat-form {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.seat-input {
-    width: 70px;
-    padding: 6px 8px;
-    font-size: 13px;
-    border: 1px solid #ccc;
-}
-
+.seat-input,
 .seat-note-input {
-    width: 200px;
-    padding: 6px 8px;
-    font-size: 13px;
-    border: 1px solid #ccc;
+    border-radius: 6px;               /* 👈 curvy */
 }
 
 /* BUTTON VARIANTS */
-.btn-secondary {
-    border: 1px solid #555;
-    background: #fff;
-    color: #111;
-}
-
-.btn-secondary:hover {
-    background: #111;
-    color: #fff;
-}
-
+.btn-secondary,
 .btn-danger {
-    border: 1px solid #aaa;
-    background: #fff;
-    color: #888;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
+.btn-secondary:hover,
 .btn-danger:hover {
-    background: #111;
-    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+.logo {
+    height: 190px;   /* try 20–28px range */
+    width: auto;
+}
+
+/* PILL STYLE TABLE HEADERS */
+.pill-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px 6px;  /* less vertical spacing between rows */
+}
+
+.pill-th {
+    padding: 6px 16px;        /* smaller header padding */
+    border-radius: 999px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pill-td {
+    padding: 8px 16px;        /* reduce cell height */
+    background: rgba(255,255,255,0.65);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pill-row:hover .pill-td {
+    background: rgba(255,255,255,0.85);
 }

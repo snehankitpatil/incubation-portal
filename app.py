@@ -8,7 +8,8 @@ from flask import session
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://snehankitpatil@localhost/incubation_portal"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:Suraj%402637@localhost:5432/incubation_db"
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 app.secret_key = "dev-secret-key"
@@ -557,4 +558,4 @@ def export_utilization_csv():
 # RUN
 # -------------------------------------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8000)

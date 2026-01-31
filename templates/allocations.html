@@ -3,40 +3,40 @@
 
 <h1 class="page-title">Allocation History</h1>
 
-<table>
+<table class="pill-table">
     <tr>
-        <th>Startup</th>
-        <th>Hall</th>
-        <th>Seats</th>
-        <th>Allocated At</th>
-        <th>Released At</th>
-        <th>Status</th>
+        <th class="pill-th">Startup</th>
+        <th class="pill-th">Hall</th>
+        <th class="pill-th">Seats</th>
+        <th class="pill-th">Allocated At</th>
+        <th class="pill-th">Released At</th>
+        <th class="pill-th">Status</th>
     </tr>
 
-{% for record, startup_name, hall_name in records %}
-<tr>
-    <td>{{ startup_name }}</td>
-    <td>{{ hall_name }}</td>
-    <td>{{ record.seats }}</td>
-    <td>{{ record.allocated_at.strftime("%Y-%m-%d %H:%M") }}</td>
+    {% for record, startup_name, hall_name in records %}
+    <tr class="pill-row">
+        <td class="pill-td">{{ startup_name }}</td>
+        <td class="pill-td">{{ hall_name }}</td>
+        <td class="pill-td">{{ record.seats }}</td>
+        <td class="pill-td">{{ record.allocated_at.strftime("%Y-%m-%d %H:%M") }}</td>
 
-    <td>
-        {% if record.released_at %}
-            {{ record.released_at.strftime("%Y-%m-%d %H:%M") }}
-        {% else %}
-            —
-        {% endif %}
-    </td>
+        <td class="pill-td">
+            {% if record.released_at %}
+                {{ record.released_at.strftime("%Y-%m-%d %H:%M") }}
+            {% else %}
+                —
+            {% endif %}
+        </td>
 
-    <td>
-        {% if record.released_at %}
-            Exited
-        {% else %}
-            Active
-        {% endif %}
-    </td>
-</tr>
-{% endfor %}
+        <td class="pill-td">
+            {% if record.released_at %}
+                Exited
+            {% else %}
+                Active
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 
 {% if not records %}
